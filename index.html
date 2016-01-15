@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{Title}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    {block:Description}
+      <meta name="description" content="{MetaDescription}" />
+    {/block:Description}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.0.0/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="http://static.tumblr.com/d0qlne1/DiAl6ekb7/jquery-1.4.2.min.js"></script>
+    <script src="http://static.tumblr.com/twte3d7/H8Glm663z/masonry.js"></script>
+    <script src="http://static.tumblr.com/twte3d7/qNulm663d/infinite.js"></script>
+    <script type="text/javascript">
+      $(window).load(function () {
+        $('#content').masonry(),
+        $('.masonryWrap').infinitescroll({ 
+          itemSelector : ".container", 
+          navSelector : "div.navigation",
+        },
+        function() {
+          $('#content').masonry(
+            { appendedContent: $(this) }
+          ); 
+        });
+      });
+    </script>
+    
+    <!-- Custom Options -->
+    <meta name="color:Avatar Background Color" content="{BackgroundColor}" />
+    <meta name="color:Avatar Border Color" content="#DDD" />
+    <meta name="color:Caption Color" content="grey" />
+    <meta name="color:Links" content="#ff6600" />
+    <meta name="color:Links - Hover" content="#ffff00" />
+    <meta name="color:Post Background Color" content="#fafafa" />
+    <meta name="color:Post Border Color" content="#f0f0f0" />
+    <meta name="color:Source Color" content="grey" />
+    <meta name="color:Twitter Background Color" content="#e4fdfa" />
+    <meta name="color:Visited Links" content="#ff6600" />
+    <meta name="if:Display Answer Posts" content="1" />
+    <meta name="if:Display Audio Posts" content="1" />
+    <meta name="if:Display Chat Posts" content="1" />
+    <meta name="if:Display Link Posts" content="1" />
+    <meta name="if:Display Panorama Posts" content="1" />
+    <meta name="if:Display Photo Posts" content="1" />
+    <meta name="if:Display Photoset Posts" content="1" />
+    <meta name="if:Display Quote Posts" content="1" />
+    <meta name="if:Display Text Posts" content="1" />
+    <meta name="if:Display Video Posts" content="1" />
+    <meta name="if:Enable Twitter Block" content="0" />
+    <meta name="if:lEENstagram Widget" content="0" />
+    <meta name="if:Show Captions" content="0" />
+    <meta name="if:Show Like and Reblog Buttons" content="0" />
+    <meta name="if:Show Post Borders" content="1" />
+    <meta name="if:Show Sources" content="0" />
+    <meta name="if:Wider Posts" content="1" />
+    <meta name="image:Background" content=""/>
+    <meta name="text:Facebook Username" content=""/>
+    <meta name="text:Instagram Username" content=""/>
+    <meta name="text:Twitter Username" content=""/>
+    <meta name="text:Flickr Username" content=""/>
+    <meta name="text:Youtube Channelname" content=""/>
+    <meta name="text:Askfm Username" content=""/>
+    <meta name="text:Skype Username" content=""/>
+    <meta name="text:Snapchat Username" content=""/>
+    
+    <style type="text/css">
+      .tumblrAutoPager_page_info, .tumblrAutoPager_page_separator {
+        display:none;
+      }
+      #infscr-loading {
+        display:none!important;
+      }
+      A {
+        text-decoration: none;
+      }
+      A:link {
+        color: {color:Links};
+      }
+      A:hover {
+        color: {color:Links - Hover};
+        text-decoration: underline;
+      }
+      A:visited {
+        color: {color:Visited Links};
+      }
+      BODY {
+        background: url('{image:Background}') {BackgroundColor} fixed no-repeat;
+        color: {AccentColor};
+        overflow: hidden;
+      }
+	  DIV#avatarBox_circle {
+        border: 3px solid {color:Avatar Border Color};
+        width: 110px;
+        height: 110px;
+        -webkit-border-radius: 50%; /* Can also be 55px */
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        background: {color:Avatar Background Color};
+	  }
+      DIV#avatarBox_circle img {
+        margin: 5px;
+        -webkit-border-radius: 50%; /* Can also be 50px */
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+      }
+      DIV#avatarBox_square {
+        border: 3px solid {color:Avatar Border Color};
+        width: 110px;
+        height: 110px;
+        background: {color:Avatar Background Color};
+	  }
+	  DIV#avatarBox_square img {
+        margin: 5px;
+      }
+      DIV#body_container {
+        margin: 0 auto;
+      }
+      DIV.buttons_divs {
+        position: relative;
+        {block:IfShowLikeAndReblogButtons}
+          display: block;
+        {/block:IfShowLikeAndReblogButtons}
+        {block:IfNotShowLikeAndReblogButtons}
+          display: none;
+        {/block:IfNotShowLikeAndReblogButtons}
+        top: 10px;
+        right: 10px;
+        float: right;
+        overflow: hidden;
+      }
+      DIV.caption {
+	    {block:IfShowCaptions}
+	      display: block;
+	    {/block:IfShowCaptions}
+	    {block:IfNotShowCaptions}
+	      display: none;
+	    {/block:IfNotShowCaptions}
+	    color: {color:Caption Color};
+	  }
+      DIV.container {
+        float: left;
+        margin: auto;
+      }
+      DIV.content {
+        margin: 0 auto;
+      }
+      DIV#header {
+        margin: auto;
+      }
+      DIV.like-div {
+        margin-right: 15px;
+      }
+      DIV.navigation {
+        display:none!important;
+      }
+      DIV.photosetpost,
+      DIV.audiopost,
+	  DIV.videopost {
+	    text-align: center;
+        {block:IfNotWiderPosts}
+          padding-left: 0px!important;
+	      padding-right: 0px!important;
+	      width: 252px!important;
+        {/block:IfNotWiderPosts}
+	  }
+      DIV.post-block {
+        background: {color:Post Background Color};
+        {block:IfWiderPosts}
+          width: 250px;
+        {/block:IfWiderPosts}
+        {block:IfNotWiderPosts}
+          width: 232px;
+        {/block:IfNotWiderPosts}
+        display: block;
+        {block:IfShowPostBorders}
+          border: 8px {color:Post Border Color} solid;
+        {/block:IfShowPostBorders}
+        padding: 10px;
+        {block:IfShowLikeAndReblogButtons}
+          padding-bottom: 20px;
+        {/block:IfShowLikeAndReblogButtons}
+        margin: 8px;
+        color: black;
+        float: left;
+        overflow: auto;
+      }
+      DIV.quote {
+	    text-shadow: 2px 2px 2px initial;
+		font-weight: bold;
+		font-size: 20px;
+	  }
+	  DIV.source {
+	    {block:IfShowSources}
+	      display: block;
+	    {/block:IfShowSources}
+	    {block:IfNotShowSources}
+	      display: none;
+	    {/block:IfNotShowSources}
+	    color: {color:Source Color};
+	  }
+      DIV.textpost {
+        padding-top: 12px;
+        display: inline;
+      }
+      DIV#twitter {
+        background: {color:Twitter Background Color};
+      }
+      DIV#tweets .content {
+        margin-bottom: 3px;
+      }
+      DIV#tweets A:link {
+        text-decoration: none;
+        color: black;
+      }
+	  H1 {
+        color: {TitleColor};
+        font-family: {TitleFont};
+        font-weight: {TitleFontWeight};
+      }
+      IMG {
+	    width: inherit;
+	  }
+	  UL#navlist LI {
+	    display: inline;
+        list-style-type: none;
+        padding-right: 20px;
+        text-decoration: underline;
+	  }
+      
+      {CustomCSS}
+      
+      //Loading screen CSS3 behavior
+      @-webkit-keyframes span {
+        0% {
+          opacity: 0;
+          -webkit-transform: scale(.6);
+          transform: scale(.6);
+        }
+        60% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+      @keyframes span {
+        0% {
+          opacity: 0;
+          -webkit-transform: scale(.6);
+          transform: scale(.6);
+        }
+        60% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+      @-webkit-keyframes line {
+        0% {
+          width: 30vmin;
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        100% {
+          width: 400vmin;
+        }
+      }
+      @keyframes line {
+        0% {
+          width: 30vmin;
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        100% {
+          width: 400vmin;
+        }
+      }
+      @-webkit-keyframes inner {
+        from {
+          width: 16%;
+        }
+        to {
+          width: 0%;
+        }
+      }
+      @keyframes inner {
+        from {
+          width: 16%;
+        }
+        to {
+          width: 0%;
+        }
+      }
+      #loading_screen {
+        background: url('{image:Background}') {BackgroundColor} fixed no-repeat;
+        z-index: 10000;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+      #preloader {
+        color: {AccentColor};
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+      }
+      #preloader span {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 6vmin;
+        line-height: 6vmin;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        margin-left: -100px;
+        margin-top: -3vmin;
+        -webkit-animation: span 1.333s linear infinite;
+        animation: span 1.333s linear infinite;
+      }
+      .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+      }
+      .spinner .line {
+        position: absolute;
+        height: 0.8vmin;
+        -webkit-animation: line 8s linear infinite;
+        animation: line 8s linear infinite;
+      }
+      .spinner .line::before,
+      .spinner .line::after {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: currentColor;
+        -webkit-transform-origin: right;
+        -ms-transform-origin: right;
+        transform-origin: right;
+        -webkit-animation: inner 8s linear infinite;
+        animation: inner 8s linear infinite;
+      }
+      .spinner .line::before {
+        -webkit-transform: translateX(-0.5em) rotate(30deg) translateX(0.1em);
+        -ms-transform: translateX(-0.5em) rotate(30deg) translateX(0.1em);
+        transform: translateX(-0.5em) rotate(30deg) translateX(0.1em);
+      }
+      .spinner .line::after {
+        -webkit-transform: translateX(-0.5em) rotate(-30deg) translateX(0.1em);
+        -ms-transform: translateX(-0.5em) rotate(-30deg) translateX(0.1em);
+        transform: translateX(-0.5em) rotate(-30deg) translateX(0.1em);
+      }
+      .spinner .line:nth-child(1) {
+        -webkit-transform: translate(-50%, -50%) rotate(60deg);
+        -ms-transform: translate(-50%, -50%) rotate(60deg);
+        transform: translate(-50%, -50%) rotate(60deg);
+      }
+      .spinner .line:nth-child(2) {
+        -webkit-transform: translate(-50%, -50%) rotate(120deg);
+        -ms-transform: translate(-50%, -50%) rotate(120deg);
+        transform: translate(-50%, -50%) rotate(120deg);
+      }
+      .spinner .line:nth-child(3) {
+        -webkit-transform: translate(-50%, -50%) rotate(180deg);
+        -ms-transform: translate(-50%, -50%) rotate(180deg);
+        transform: translate(-50%, -50%) rotate(180deg);
+      }
+      .spinner .line:nth-child(4) {
+        -webkit-transform: translate(-50%, -50%) rotate(240deg);
+        -ms-transform: translate(-50%, -50%) rotate(240deg);
+        transform: translate(-50%, -50%) rotate(240deg);
+      }
+      .spinner .line:nth-child(5) {
+        -webkit-transform: translate(-50%, -50%) rotate(300deg);
+        -ms-transform: translate(-50%, -50%) rotate(300deg);
+        transform: translate(-50%, -50%) rotate(300deg);
+      }
+      .spinner .line:nth-child(6) {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+        -ms-transform: translate(-50%, -50%) rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+      .spinner:nth-child(1) .line,
+      .spinner:nth-child(1) .line::before,
+      .spinner:nth-child(1) .line::after {
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+      }
+      .spinner:nth-child(2) .line,
+      .spinner:nth-child(2) .line::before,
+      .spinner:nth-child(2) .line::after {
+        -webkit-animation-delay: -1.33333s;
+        animation-delay: -1.33333s;
+      }
+      .spinner:nth-child(3) .line,
+      .spinner:nth-child(3) .line::before,
+      .spinner:nth-child(3) .line::after {
+        -webkit-animation-delay: -2.66666s;
+        animation-delay: -2.66666s;
+      }
+      .spinner:nth-child(4) .line,
+      .spinner:nth-child(4) .line::before,
+      .spinner:nth-child(4) .line::after {
+        -webkit-animation-delay: -4s;
+        animation-delay: -4s;
+      }
+      .spinner:nth-child(5) .line,
+      .spinner:nth-child(5) .line::before,
+      .spinner:nth-child(5) .line::after {
+        -webkit-animation-delay: -5.33333s;
+        animation-delay: -5.33333s;
+      }
+      .spinner:nth-child(6) .line,
+      .spinner:nth-child(6) .line::before,
+      .spinner:nth-child(6) .line::after {
+        -webkit-animation-delay: -6.66666s;
+        animation-delay: -6.66666s;
+      }
+      .spinner:nth-child(2n) {
+        -webkit-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+        transform: rotate(30deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading_screen">
+      <div id='preloader'>
+        <span>loading</span>
+        <div class='spinner'>
+          <div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div> </div>
+        <div class='spinner'>
+          <div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div> </div>
+        <div class='spinner'>
+          <div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div> </div>
+        <div class='spinner'>
+          <div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div> </div>
+        <div class='spinner'>
+          <div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div> </div>
+        <div class='spinner'>
+          <div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div> </div>
+        <div class='spinner'>
+          <div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div><div class='line'></div> </div>
+      </div>
+    </div>
+    <div id="body_container">
+      <div id="header">
+        <table cellspacing="10">
+          <tr>
+            <td>
+              <div id="avatarBox_{AvatarShape}">
+                <img src="{PortraitURL-128}" />
+              </div>
+            </td>
+            <td>
+              <h1>{Title}</h1>
+              {block:Description}
+                <p id="description">
+                  {Description}
+                </p>
+              {/block:Description}
+            </td>
+          </tr>
+          <tr>
+            <td colspan=2>
+              <div class="navigation">
+                {block:Pagination} 
+                  <p id="page_nav">
+                    {block:NextPage}
+                      <a style="float:right" href="{NextPage}" id="next">
+                        Older ?
+                      </a>
+                    {/block:NextPage}
+                    {block:PreviousPage}
+                      <a style="float:left" href="{PreviousPage}">
+                        ? Newer
+                      </a>
+                    {/block:PreviousPage}
+                  </p>
+                {/block:Pagination}
+              </div>
+              <ul id="navlist">
+	            <li><a href="/archive">Archive</a></li>
+	            {block:IfFacebookUsername}<li><a href="http://fb.com/{text:Facebook Username}">Facebook</a></li>{/block:IfFacebookUsername}
+  	            {block:IfInstagramUsername}<li><a href="http://instagram.com/{text:Instagram Username}">Instagram</a></li>{/block:IfInstagramUsername}
+   	            {block:IfTwitterUsername}<li><a href="http://twitter.com/{text:Twitter Username}">Twitter</a></li>{/block:IfTwitterUsername}
+   	            {block:IfFlickrUsername}<li><a href="https://www.flickr.com/{text:Flickr Username}">Flickr</a></li>{/block:IfFlickrUsername}
+	            {block:IfYoutubeChannelname}<li><a href="http://youtube.com/{text:Youtube Channelname}">Youtube</a></li>{/block:IfYoutubeChannelname}
+	            {block:IfAskfmUsername}<li><a href="http://ask.fm/{text:Askfm Username}">Ask.fm</a></li>{/block:IfAskfmUsername}
+	            {block:IfSkypeUsername}<li>Skype: {text:Skype Username}</li>{/block:IfSkypeUsername}
+	            {block:IfSnapchatUsername}<li>Snapchat: {text:Snapchat Username}</li>{/block:IfSnapchatUsername}
+	          </ul>
+	        </td>
+          </tr>
+        </table>
+      </div>
+      {block:IflEENstagramWidget}
+      <div id="leenstagram">
+        <!-- Put you lEENstagram widget here!
+        Link: http://leenthemes.com/Instagram-Widget/
+        Recommended options:
+            Responsive: On, layout: 1 * 10 and Show Header: Off
+        -->
+      </div>
+      {/block:IflEENstagramWidget}
+      <div id="content">
+        {block:IfEnableTwitterBlock}
+          {block:Twitter}
+            <div id="twitter" class="post-block" style="display:none;">
+              <h3>
+                <a href="http://twitter.com/{TwitterUsername}">
+                  Latest Tweets
+                </a>
+              </h3>
+              <div id="tweets"></div>
+            </div>
+            <script type="text/javascript">
+              function recent_tweets(data) {
+                for (i=0; i<6; i++) {
+                  document.getElementById("tweets").innerHTML =
+                  document.getElementById("tweets").innerHTML +
+                  '<a href="http://twitter.com/{TwitterUsername}/status/' +
+                  (data[i].id_str ? data[i].id_str : data[i].id) +
+                  '"><div class="content">' + data[i].text +
+                  '</div></a><hr />';
+                }
+                document.getElementById("twitter").style.display = 'block';
+              }
+            </script>
+          {/block:Twitter}
+        {/block:IfEnableTwitterBlock}
+	    {block:Posts}
+          <div class="container">
+            {block:IfDisplayTextPosts}{block:Text}
+              <div class="textpost post-block">
+                {block:Title}
+                  <h3><a href="{Permalink}">{Title}</a></h3>
+                {/block:Title}
+                <a href="{PostAuthorName}.tumblr.com" target="_blank">{PostAuthorName}</a>
+                {Body}
+                <div class="reblog_div buttons_divs">{ReblogButton}</div>
+                <div class="like_div buttons_divs">{LikeButton}</div>
+              </div>
+            {/block:Text}{/block:IfDisplayTextPosts}
+            {block:IfDisplayPhotoPosts}{block:Photo}
+              <div class="photopost post-block">
+                <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+                {block:Caption}
+                  <div class="caption">{Caption}</div>
+                {/block:Caption}
+                <div class="reblog_div buttons_divs">{ReblogButton}</div>
+                <div class="like_div buttons_divs">{LikeButton}</div>
+              </div>
+            {/block:Photo}{/block:IfDisplayPhotoPosts}
+            {block:IfDisplayPanoramaPosts}{block:Panorama}
+              <div class="panoramapost post-block">
+                {LinkOpenTag}
+                  <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                {LinkCloseTag}
+  			    {block:Caption}
+                  <div class="caption">{Caption}</div>
+                {/block:Caption}
+                <div class="reblog_div buttons_divs">{ReblogButton}</div>
+                <div class="like_div buttons_divs">{LikeButton}</div>
+              </div>
+            {/block:Panorama}{/block:IfDisplayPanoramaPosts}
+            {block:IfDisplayPhotosetPosts}{block:Photoset}
+              <div class="post-block photosetpost">
+                {Photoset-250}
+		  	    {block:Caption}
+                  <div class="caption">{Caption}</div>
+                {/block:Caption}
+                <div class="reblog_div buttons_divs">{ReblogButton}</div>
+                <div class="like_div buttons_divs">{LikeButton}</div>
+              </div>
+            {/block:Photoset}{/block:IfDisplayPhotosetPosts}
+            {block:IfDisplayQuotePosts}{block:Quote}
+              <div class="quotepost post-block">
+                <div class="quote">&bdquo;{Quote}&rdquo;</div>
+                {block:Source}
+                  <div class="source">{Source}</div>
+                {/block:Source}
+                <div class="reblog_div buttons_divs">{ReblogButton}</div>
+                <div class="like_div buttons_divs">{LikeButton}</div>
+              </div>
+            {/block:Quote}{/block:IfDisplayQuotePosts}
+            {block:IfDisplayLinkPosts}{block:Link}
+              <div class="linkpost post-block">
+                <a href="{URL}" class="link" {Target}>{Name}</a>
+                {block:Description}
+                  <div class="description">{Description}</div>
+                {/block:Description}
+                <div class="reblog_div buttons_divs">{ReblogButton}</div>
+                <div class="like_div buttons_divs">{LikeButton}</div>
+              </div>
+            {/block:Link}{/block:IfDisplayLinkPosts}
+            {block:IfDisplayChatPosts}{block:Chat}
+              <div class="chatpost post-block">
+                {block:Title}
+                  <h3><a href="{Permalink}">{Title}</a></h3>
+                {/block:Title}
+                <ul class="chat">
+                  {block:Lines}
+                    <li class="{Alt} user_{UserNumber}">
+                      {block:Label}
+                        <span class="label">{Label}</span>
+                      {/block:Label}{Line}
+                    </li>
+                  {/block:Lines}
+                </ul>
+                <div class="reblog_div buttons_divs">{ReblogButton}</div>
+                <div class="like_div buttons_divs">{LikeButton}</div>
+              </div>
+            {/block:Chat}{/block:IfDisplayChatPosts}
+            {block:IfDisplayVideoPosts}{block:Video}
+              <div class="videopost post-block">
+                {Video-250}
+		  	    {block:Caption}
+                  <div class="caption">{Caption}</div>
+                {/block:Caption}
+                <div class="reblog_div buttons_divs">{ReblogButton}</div>
+                <div class="like_div buttons_divs">{LikeButton}</div>
+              </div>
+            {/block:Video}{/block:IfDisplayVideoPosts}
+            {block:IfDisplayAudioPosts}{block:Audio}
+              <div class="audiopost post-block">
+                {AudioEmbed-250}
+			    {block:Caption}
+                  <div class="caption">{Caption}</div>
+                {/block:Caption}
+                <div class="reblog_div buttons_divs">{ReblogButton}</div>
+                <div class="like_div buttons_divs">{LikeButton}</div>
+              </div>
+            {/block:Audio}{/block:IfDisplayAudioPosts}
+            {block:IfDisplayAnswerPosts}{block:Answer}
+              <div class="anwerpost post-block">
+                <div class="question">
+                  <div class="asker">
+                    {Asker}
+                  </div>
+                  <div class="asker-question">
+                    {Question}
+                  </div>
+                  <img class="asker-avatar" src="{AskerPortraitURL-96}" alt="Asker's avatar">
+                </div>
+                {block:Answerer}
+                  <div class="answer">
+                    <div class="answerer">
+                      {Answerer}
+                    </div>
+                    <div class="answerer-answer">
+                      {Answer}
+                    </div>
+                    <img class="answerer-avatar" src="{AnswererPortraitURL-96}" alt="Answerer's avatar">
+                  </div>
+                {/block:Answerer}
+                <div class="replies">
+                  {Replies}
+                </div>
+              </div>
+            {/block:Answer}{/block:IfDisplayAnswerPosts}
+          </div>
+        {/block:Posts}
+      </div>
+      <div style="height: 1000px">&nbsp;</div>
+      {block:IfEnableTwitterBlock}
+        {block:Twitter}
+          <script type="text/javascript" src="/tweets.js"></script>
+        {/block:Twitter}
+      {/block:IfEnableTwitterBlock}
+      <script type="text/javascript">
+          window.setTimeout(function(){
+              document.getElementById("loading_screen").style.display ="none";
+              x=document.getElementsByTagName("body");
+              x[0].style.overflow="initial";
+          }, 6000)
+      </script>
+    </div>
+    <!-- SCM Music Player http://scmplayer.net -->
+    
+    <!-- SCM Music Player script end -->
+  </body>
+</html>
